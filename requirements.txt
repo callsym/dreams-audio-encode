@@ -1,0 +1,6 @@
+PyAudio >=0.2.12
+numpy
+scipy
+matplotlib
+pillow
+
