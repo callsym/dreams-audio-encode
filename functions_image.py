@@ -1,14 +1,13 @@
 from PIL import Image
 
-def convert_image_to_greyscale(image_path):
-    img = Image.open('Images/image.jpg').convert('L')
-    img.save('Image_greyscale.png')
-    return
-
-
 def encode_greyscale_image_to_8bit(image):
-    # Convert a greyscale image to 8bit binary ready for encoding into .wav format
-    # Iterate over pixels, convert each pixel's 0-255 value to 8bit binary
+    """
+    Convert a greyscale image to 8bit binary ready for encoding into .wav format
+    Iterate over pixels, convert each pixel's 0-255 value to 8bit binary
+
+    :param image:   array       2-dimensional array of pixel luminosities
+    :return:        list        image binary data
+    """
     output = []
 
     # Iterate rows

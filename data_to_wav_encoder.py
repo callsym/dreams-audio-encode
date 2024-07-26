@@ -7,7 +7,12 @@ import os.path
 # ------------------------------------------------------------------------------
 
 def remap_amplitude(frequency):
-    # Remap amplitude based on frequency: greater amplitude at higher frequencies
+    """
+    Remap amplitude based on frequency: greater amplitude at higher frequencies
+    To counteract Dreams' smoothing function which boosts the lower frequencies!
+    :param frequency:   int     frequency in Hz
+    :return:            int     amplitude multiplier (between min amplitude and max amplitude)
+    """
     # input bands
     frequency_min = 0
     frequency_max = 10000
@@ -25,7 +30,12 @@ def remap_amplitude(frequency):
 
 
 def generate_random_input_data_8bit(num_bytes):
-    # Generate random bluepoint for an audio file of num_samples samples, between min_bits and max_bits bits per sample
+    """
+    Generate random blueprint for an audio file of num_samples samples,
+    between min_bits and max_bits bits per sample
+    :param num_bytes:   int
+    :return:            list
+    """
     data = []
     while len(data) < num_bytes * 8:
         # Generate one bit
@@ -34,7 +44,12 @@ def generate_random_input_data_8bit(num_bytes):
     return data
 
 
-def get_bytes(data):
+def z_get_bytes(data):
+    """
+    Chunk image data into its constituent bytes
+    :param data:    list    binary image data
+    :return:        list
+    """
     output = []
     i = 0
     while i < len(data):
@@ -48,6 +63,14 @@ def get_bytes(data):
 
 
 def create_wav_file(data, filename, sample_length_seconds=1.0, samplerate=44100):
+    """
+    Encode image into .wav file
+    :param data:                    list        Image binary data
+    :param filename:                string      Output filename
+    :param sample_length_seconds:   int         Length of output file in seconds
+    :param samplerate:              int         Sample rate of generated output file
+    :return:                        list        Waveform amplitude series of output file
+    """
     output = []
     t = np.linspace(0., sample_length_seconds, int(sample_length_seconds * samplerate))  # time space for 1 sample
 

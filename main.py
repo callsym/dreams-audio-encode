@@ -57,3 +57,5 @@ while bits_written < len(image_data_8bit):
 
     bits_written += len(data_slice)
     part += 1
+
+
